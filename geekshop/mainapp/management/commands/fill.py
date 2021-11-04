@@ -1,13 +1,14 @@
-import json
-from django.conf import settings
+import json, os
 from django.core.management.base import BaseCommand
 from authapp.models import ShopUser
 from mainapp.models import ProductCategory, Product
 
+JSON_PATH = 'json'
+
 
 def load_from_json(file_name):
-    with open(f"{settings.BASE_DIR}/json/{file_name}.json", 'r') as json_file:
-        return json.load(json_file)
+    with open(os.path.join(JSON_PATH, file_name + '.json'), 'r', encoding='utf-8') as infile:
+        return json.load(infile)
 
 
 class Command(BaseCommand):
