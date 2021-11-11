@@ -1,0 +1,51 @@
+[
+  {
+    "category": "дом",
+    "name": "кресло",
+    "image": "products/product-1.jpg",
+    "price": 15,
+    "quantity": 5
+  },
+  {
+    "category": "дом",
+    "name": "кровать",
+    "image": "products/product-2.jpg",
+    "price": 568,
+    "quantity": 40
+  },
+  {
+    "category": "офис",
+    "name": "стол",
+    "image": "products/product-3.jpg",
+    "price": 869,
+    "quantity": 20
+  },
+  {
+    "category": "офис",
+    "name": "стул",
+    "image": "products/product-4.jpg",
+    "price": 56,
+    "quantity": 12
+  },
+  {
+    "category": "модерн",
+    "name": "шкаф",
+    "image": "products/product-11.jpg",
+    "price": 456,
+    "quantity": 52
+  },
+  {
+    "category": "классика",
+    "name": "комод",
+    "image": "products/product-21.jpg",
+    "price": 421,
+    "quantity": 21
+  },
+  {
+    "category": "классика",
+    "name": "ковер",
+    "image": "products/product-31.jpg",
+    "price": 458,
+    "quantity": 12
+  }
+]
