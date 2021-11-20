@@ -2,31 +2,23 @@ import random
 
 from django.shortcuts import render, get_object_or_404
 
-from basketapp.models import Basket
+
 from mainapp.models import Product, ProductCategory
 
 
 def index(request):
     context = {
         'title': 'Главная',
-        'products': Product.objects.all()[:4],
-        'basket': get_basket(request.user)
+        'products': Product.objects.all()[:4]
     }
     return render(request, 'mainapp/index.html', context)
 
 
 def contact(request):
     context = {
-        'title': 'Контакты',
-        'basket': get_basket(request.user)
+        'title': 'Контакты'
     }
     return render(request, 'mainapp/contact.html', context)
-
-
-def get_basket(user):
-    if user.is_authenticated:
-        return Basket.objects.filter(user=user)
-    return None
 
 
 def get_hot_product():
@@ -55,8 +47,7 @@ def products(request, pk=None):
             'links_menu': links_menu,
             "title": 'Продукты',
             'category': category_item,
-            'products': products_list,
-            'basket': get_basket(request.user)
+            'products': products_list
         }
         return render(request, 'mainapp/products_list.html', context=context)
 
@@ -66,8 +57,7 @@ def products(request, pk=None):
         'links_menu': links_menu,
         "title": 'Продукты',
         'hot_product': hot_product,
-        'same_products': same_products,
-        'basket': get_basket(request.user)
+        'same_products': same_products
     }
     return render(request, 'mainapp/products.html', context=context)
 
@@ -76,7 +66,6 @@ def product(request, pk):
     links_menu = ProductCategory.objects.all()
     context = {
         'product': get_object_or_404(Product, pk=pk),
-        'basket': get_basket(request.user),
         'links_menu': links_menu
     }
 
