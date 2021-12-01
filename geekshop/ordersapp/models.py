@@ -5,6 +5,7 @@ from mainapp.models import Product
 
 
 class Order(models.Model):
+
     STATUS_FORMING = 'FM'
     STATUS_SEND_TO_PROCEED = 'STP'
     STATUS_PROCEEDED = 'PRD'
@@ -37,13 +38,6 @@ class Order(models.Model):
         _items = self.orderitems.select_related()
         return sum(list(map(lambda x: x.product_cost, _items)))
 
-    def delete(self, *args, **kwargs):
-        for item in self.orderitems.all():
-            item.product.quantity += item.quantity
-            item.product.save()
-        self.is_active = False
-        self.save()
-
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name="orderitems")
@@ -53,3 +47,7 @@ class OrderItem(models.Model):
     @property
     def product_cost(self):
         return self.product.price + self.quantity
+
+    @staticmethod
+    def get_item(pk):
+        return OrderItem.objects.get(pk=pk)
