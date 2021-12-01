@@ -1,0 +1,12 @@
+{% extends 'authapp/base.html' %}
+{% load static %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <h1>Добро пожаловать в наш магазин</h1>
+    {% else %}
+        <h1>Чт о-то пошло не так</h1>
+    {% endif %}
+    <hr>
+    <a href="{% url 'index' %}">На главную</a>
+{% endblock %}
