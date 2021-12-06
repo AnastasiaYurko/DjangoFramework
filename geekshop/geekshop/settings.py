@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-s#e_)dj5183#8ya72g+f!r)lv59nxkwmpmsx(q8=hy+(n9k_qn
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -91,8 +91,9 @@ AUTH_USER_MODEL = 'authapp.ShopUser'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'geekshop',
+        'USER': 'postgres'
     }
 }
 
