@@ -3,6 +3,7 @@ from django.db import models
 from django.conf import settings
 
 from mainapp.models import Product
+from django.utils.functional import cached_property
 
 
 class Basket(models.Model):
@@ -29,3 +30,9 @@ class Basket(models.Model):
     @staticmethod
     def get_item(pk):
         return Basket.objects.get(pk=pk)
+
+    @cached_property
+    def get_items_cached(self):
+        return self.user.basket.select_related()
+
+
